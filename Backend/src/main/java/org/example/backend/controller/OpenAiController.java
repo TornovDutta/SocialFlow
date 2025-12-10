@@ -1,6 +1,7 @@
-package org.example.backend;
+package org.example.backend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.backend.OpenAiService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
