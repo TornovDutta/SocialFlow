@@ -1,0 +1,15 @@
+package org.example.backend.exception;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ErrorResponse {
+    private LocalDateTime dateTime;
+    private String msg;
+    private String details;
+}

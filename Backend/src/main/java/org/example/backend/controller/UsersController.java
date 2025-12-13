@@ -1,0 +1,35 @@
+package org.example.backend.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.example.backend.DTO.UserRequested;
+import org.example.backend.DTO.UsersReponse;
+import org.example.backend.config.CustomUserDetails;
+import org.example.backend.exception.UserNotFoundException;
+import org.example.backend.model.Users;
+import org.example.backend.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/users")
+public class UsersController {
+    private final UserService service;
+
+
+    @PutMapping("/me")
+    public ResponseEntity<?> updateUsers(@RequestBody UserRequested requested,
+                                         @AuthenticationPrincipal CustomUserDetails details) throws UserNotFoundException{
+        String id=details.getId();
+        return new ResponseEntity<>(id,HttpStatus.ACCEPTED);
+    }
+    @DeleteMapping("/me")
+    public ResponseEntity<?> deleteUsers(@PathVariable String id) throws UserNotFoundException{
+        service.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+}
