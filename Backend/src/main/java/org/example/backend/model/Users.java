@@ -15,4 +15,10 @@ public class Users {
     private String id;
     private String username;
     private String password;
+    private String role="USER";
+
+    public Users(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
