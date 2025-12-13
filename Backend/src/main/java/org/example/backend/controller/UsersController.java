@@ -17,19 +17,12 @@ import java.util.List;
 @RequestMapping("/users")
 public class UsersController {
     private final UserService service;
-    @GetMapping("/")
-    public ResponseEntity<List<UsersReponse>> getUsers() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getUsesById(@PathVariable String id) throws UserNotFoundException {
-        return new ResponseEntity<>(service.get(id),HttpStatus.OK);
-    }
-    @PutMapping("/{id}")
+
+    @PutMapping("/me")
     public ResponseEntity<?> updateUsers(@PathVariable String id,@RequestBody UserRequested requested) throws UserNotFoundException{
         return new ResponseEntity<>(service.upadte(id,requested),HttpStatus.ACCEPTED);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/me")
     public ResponseEntity<?> deleteUsers(@PathVariable String id) throws UserNotFoundException{
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
