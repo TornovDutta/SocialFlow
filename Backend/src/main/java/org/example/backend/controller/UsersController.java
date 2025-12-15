@@ -25,7 +25,7 @@ public class UsersController {
     public ResponseEntity<?> updateUsers(@RequestBody UserRequested requested,
                                          @AuthenticationPrincipal CustomUserDetails details) throws UserNotFoundException{
         String id=details.getId();
-        return new ResponseEntity<>(id,HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(service.upadte(id,requested),HttpStatus.ACCEPTED);
     }
     @DeleteMapping("/me")
     public ResponseEntity<?> deleteUsers(@PathVariable String id) throws UserNotFoundException{

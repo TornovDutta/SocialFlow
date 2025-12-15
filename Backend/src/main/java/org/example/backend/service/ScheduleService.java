@@ -8,5 +8,5 @@ import java.util.List;
 public interface ScheduleService {
     List<ScheduleTask> getAll(String id);
 
-    void scheduleTask(LocalDateTime time);
+    void scheduleTask(String id,LocalDateTime time,String content);
 }

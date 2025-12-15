@@ -25,9 +25,11 @@ public class ScheduleController {
         return new ResponseEntity<>(service.getAll(id), HttpStatus.OK);
     }
     @PostMapping("/")
-    public ResponseEntity<?> schedule(@RequestParam String dateTime){
+    public ResponseEntity<?> schedule(@RequestParam String dateTime,@RequestParam String content,
+                                      @AuthenticationPrincipal CustomUserDetails details){
+        String id= details.getId();
         LocalDateTime time=LocalDateTime.parse(dateTime);
-        service.scheduleTask(time);
+        service.scheduleTask(id,time,content);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

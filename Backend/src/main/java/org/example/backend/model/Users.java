@@ -17,9 +17,14 @@ public class Users {
     private String password;
     private String role="USER";
     private List<Posts> posts;
+    private String email;
 
     public Users(String username, String password) {
         this.username = username;
         this.password = password;
+    }public Users(String username, String password,String email) {
+        this.username = username;
+        this.password = password;
+        this.email=email;
     }
 }
