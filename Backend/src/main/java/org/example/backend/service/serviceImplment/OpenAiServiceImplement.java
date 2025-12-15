@@ -23,7 +23,7 @@ public class OpenAiServiceImplement implements OpenAiService {
     public String generate(String userText) {
 
         String prompt = """
-    Create a professional, engaging LinkedIn post based on the following content.
+    Create a professional, engaging LinkedIn posts based on the following content.
     Add relevant emojis, keep it concise, and end with 2–3 relevant hashtags.
 
     Content:

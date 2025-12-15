@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.lang.annotation.Documented;
+import java.util.List;
 
 @Document
 @Data
@@ -16,6 +16,7 @@ public class Users {
     private String username;
     private String password;
     private String role="USER";
+    private List<Posts> posts;
 
     public Users(String username, String password) {
         this.username = username;
