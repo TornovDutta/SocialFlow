@@ -9,14 +9,13 @@ import org.example.backend.service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users/schedule")
 @RequiredArgsConstructor
 public class ScheduleController {
     private final ScheduleService service;
@@ -24,5 +23,13 @@ public class ScheduleController {
     public ResponseEntity<List<ScheduleTask>> getAll(@AuthenticationPrincipal CustomUserDetails details){
         String id=details.getId();
         return new ResponseEntity<>(service.getAll(id), HttpStatus.OK);
+    }
+    @PostMapping("/")
+    public ResponseEntity<?> schedule(@RequestParam String dateTime,@RequestParam String content,
+                                      @AuthenticationPrincipal CustomUserDetails details){
+        String id= details.getId();
+        LocalDateTime time=LocalDateTime.parse(dateTime);
+        service.scheduleTask(id,time,content);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

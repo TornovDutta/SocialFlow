@@ -25,6 +25,7 @@ public class RegisterServiceImplement implements RegisterService {
         user.setUsername(request.name());
         user.setPassword(passwordEncoder.encode(request.password()));
         user.setRole("USER");
+        user.setEmail(request.email());
 
 
         Users savedUser = repo.save(user);

@@ -37,6 +37,7 @@ public class UserServiceImplement implements UserService {
                 new UserNotFoundException("wrong id"));
         users.setUsername(requested.name());
         users.setPassword(requested.password());
+        users.setEmail(requested.email());
         repo.save(users);
         return mapper.toDTO(users);
     }
