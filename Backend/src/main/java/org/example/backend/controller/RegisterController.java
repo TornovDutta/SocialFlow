@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegisterController {
     private final RegisterService service;
     @PostMapping("")
-    public ResponseEntity<UsersReponse> registe(@RequestBody UserRequested requested){
+    public ResponseEntity<UsersReponse> register(@RequestBody UserRequested requested){
         return new ResponseEntity<>(service.add(requested), HttpStatus.CREATED);
     }
 }

@@ -46,6 +46,8 @@ public class ScheduleServiceImplement implements ScheduleService {
         String email = user.getEmail();
 
 
+
+
         mailService.mail(
                 "Your post is scheduled: " + content,
                 email

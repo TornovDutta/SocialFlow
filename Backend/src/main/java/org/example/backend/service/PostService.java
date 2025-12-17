@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PostService  {
     List<PostResponse> getAllPost(String id);
+
+    String  post(String content,String id);
 }
